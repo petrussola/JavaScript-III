@@ -11,6 +11,19 @@
   - If a plane takes off, its "isFlying" property is true.
   - If a plane lands, its "isFlying" property is false.
 
+  function Airplane (plane) {
+    this.name = plane.name;
+    this.isFlying = this.isFlying; 
+  }
+
+  Airplane.prototype.takeOff = function () {
+    return this.isFlying = true;
+  };
+  
+  Airplane.prototype.landing = function () {
+    return this.isFlying = false;
+  };
+
   SOLUTION CODE:
 
   function Airplane(name) {
@@ -108,10 +121,10 @@
 */
 
 /*
-  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
-  * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
-  * Instances of CharacterStats should have all of the same properties as GameObject.
-*/
+ * Inheritance chain: GameObject -> CharacterStats -> Humanoid
+ * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
+ * Instances of CharacterStats should have all of the same properties as GameObject.
+ */
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
