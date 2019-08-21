@@ -29,12 +29,28 @@ var car = {
     },
 }
 
-
-
 // Principle 3
 
 // code example for New Binding
 
+function Car (info) {
+    this.brand = info.brand;
+    this.model = info.model;
+}
+
+var toyota = new Car({
+    brand: "Toyota",
+    model: "Corolla",
+});
+
 // Principle 4
 
 // code example for Explicit Binding
+
+function foo(brand, model) {
+    return `This is my car, a ${brand} ${model}`
+}
+
+console.log(foo.call('bike', "Seat", "Ibiza"));
+console.log(foo.apply('bike', ["Seat", "Ibiza"]));
+console.log(foo.bind('bike'));
