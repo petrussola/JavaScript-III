@@ -100,7 +100,7 @@ function Car (model, make) {
 
 Car.prototype.drive = function (kilometers) {
   if (this.canBeDriven === true) {
-    return this.odometer+=Number(kilometers);
+    return this.odometer+=kilometers;
   } else {
     return `I crashed at ${this.odometer} kilometers!`
   }
