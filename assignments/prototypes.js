@@ -174,6 +174,15 @@ Employee.prototype.lunchBreakTooLong = function() {
   return console.log(`You took a lunch break too long. I have to give you a warning. Watch out, you already have ${this.warnings} warnings..`);
 }
 
+Employee.prototype.employeeReview = function () {
+  if (this.warnings === 0) {
+    return (console.log(`You are doing great!`));
+  } else if (this.warnings > 0 && this.warnings < 3) {
+    return (console.log(`Be careful, you have ${this.warnings} warnings. You need to improve!`));
+  } 
+  return console.log(`You have ${this.warnings} warnings. You are fired!`);
+}
+
 let john = new Employee ("john", "eng");
 console.log(john);
 
