@@ -207,10 +207,10 @@ console.log(john);
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
 
-function GameObject (createdAt, name, dimensions) {
-  this.createdAt = createdAt;
-  this.name = name;
-  this.dimensions = dimensions;
+function GameObject (input) {
+  this.createdAt = input.createdAt;
+  this.name = input.name;
+  this.dimensions = input.dimensions;
 }
 
 GameObject.prototype.destroy = function () {
@@ -224,9 +224,9 @@ GameObject.prototype.destroy = function () {
 * should inherit destroy() from GameObject's prototype
 */
 
-function CharacterStats (createdAt, name, dimensions, healthPoints) {
-  GameObject.call(this, createdAt, name, dimensions);
-  this.healthPoints = healthPoints;
+function CharacterStats (input) {
+  GameObject.call(this, input);
+  this.healthPoints = input.healthPoints;
 };
 
 CharacterStats.prototype.takeDamage = function () {
@@ -247,11 +247,11 @@ CharacterStats.prototype = Object.create(GameObject.prototype);
 * should inherit takeDamage() from CharacterStats
 */
 
-function Humanoid (createdAt, name, dimensions, healthPoints, team, weapons, language) {
-  CharacterStats.call(this, createdAt, name, dimensions, healthPoints)
-  this.team = team;
-  this.weapons = weapons;
-  this.language = language;
+function Humanoid (input) {
+  CharacterStats.call(this, input)
+  this.team = input.team;
+  this.weapons = input.weapons;
+  this.language = input.language;
 }
 
 Humanoid.prototype.greet = function () {
@@ -260,8 +260,8 @@ Humanoid.prototype.greet = function () {
 
 Humanoid.prototype = Object.create(CharacterStats.prototype);
 
-var newMan = new Humanoid("createdat", "miname", {length: 2, width: 1}, 20, "test" , "test" , "test")
-console.log(newMan.dimensions);
+// var newMan = new Humanoid(new Date(), "miname", {length: 2, width: 1}, 20, "test" , "test" , "test")
+// console.log(newMan.dimensions);
 /*
  * Inheritance chain: GameObject -> CharacterStats -> Humanoid
  * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
@@ -318,6 +318,8 @@ console.log(newMan.dimensions);
     ],
     language: 'Elvish',
   });
+
+  // console.log(swordsman);
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
   console.log(swordsman.healthPoints); // 15
