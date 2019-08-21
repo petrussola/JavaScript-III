@@ -228,13 +228,13 @@ function CharacterStats (input) {
   GameObject.call(this, input);
   this.healthPoints = input.healthPoints;
 };
+CharacterStats.prototype = Object.create(GameObject.prototype);
 
 CharacterStats.prototype.takeDamage = function () {
   // return `${this} took damage`;
   return `${this.name} took damage.`;
 };
 
-CharacterStats.prototype = Object.create(GameObject.prototype);
 
 
 /*
@@ -253,12 +253,12 @@ function Humanoid (input) {
   this.weapons = input.weapons;
   this.language = input.language;
 }
+Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 Humanoid.prototype.greet = function () {
   return `${this.name} offers a greeting in ${this.language}.`
 };
 
-Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 // var newMan = new Humanoid(new Date(), "miname", {length: 2, width: 1}, 20, "test" , "test" , "test")
 // console.log(newMan.dimensions);
