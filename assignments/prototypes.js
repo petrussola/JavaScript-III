@@ -122,8 +122,24 @@ console.log(toyota);
   - Build a Baby constructor that subclasses the Person built earlier.
   - Babies of course inherit the ability to greet, which can be strange.
   - Babies should have the ability to play, which persons don't.
-  - By playing, a string is returned with some text of your choosing.
+  - By playing, a string is returned with some text of your choosing.*/
 
+  function Baby (name, age) {
+    Person.call(this, name, age);
+  };
+
+  Baby.prototype = Object.create(Person.prototype);
+
+  Baby.prototype.play = function () {
+    return `I, ${this.name}, love to play`
+  }
+
+  var babyShark = new Baby ("little one", 1);
+  console.log(babyShark.name);
+  console.log(babyShark.play());
+  console.log(babyShark.greet());
+
+  /*
   TASK 4
 
   Use your imagination and come up with constructors that allow to build objects
@@ -131,6 +147,8 @@ console.log(toyota);
   complicated one with lots of state. Surprise us!
 
 */
+
+
 
 /*
 
