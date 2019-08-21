@@ -148,6 +148,35 @@ console.log(toyota);
 
 */
 
+function Employee (name, department) {
+  this.name = name;
+  this.department = department;
+  this.warnings = 0;
+}
+
+Employee.prototype.lateForWork = function (hours) {
+  
+  let impactOnWarnings = Number(Math.round(hours * 0.5));
+  console.log(impactOnWarnings);
+  this.warnings+=impactOnWarnings;
+  return console.log(`You are late ${hours} hours. (grumble grumble) I am giving you ${impactOnWarnings} warning(s). Watch out, you already have ${this.warnings} warnings..`)
+};
+
+Employee.prototype.watchYoutube = function () {
+  this.warnings+=1;
+  return console.log(`I caught you watching YouTube at work. I am giving you 1 warning. Watch out, you already have ${this.warnings}..`);
+
+}
+
+Employee.prototype.lunchBreakTooLong = function() {
+  this.warnings+=1;
+  console.log(this.warnings);
+  return console.log(`You took a lunch break too long. I have to give you a warning. Watch out, you already have ${this.warnings} warnings..`);
+}
+
+let john = new Employee ("john", "eng");
+console.log(john);
+
 
 
 /*
