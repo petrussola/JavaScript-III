@@ -57,8 +57,30 @@
   - Give persons the ability to eat edibles.
   - When eating an edible, it should be pushed into a "stomach" property which is an array.
   - Give persons the ability to poop.
-  - When pooping, the stomach should empty.
+  - When pooping, the stomach should empty. */
 
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+};
+
+Person.prototype.greet = function () {
+  return `My name is ${this.name} and I am ${this.age} years old`
+};
+
+Person.prototype.eat = function (food) {
+  return this.stomach.push(food);
+}
+
+Person.prototype.poop = function () {
+  return this.stomach = [];
+}
+
+var pere = new Person("Pere", 36);
+console.log(pere);
+
+/*
   TASK 2
 
   - Build a Car constructor that takes model name and make.
@@ -67,8 +89,34 @@
   - Give cars the ability to crash.
   - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
   - Give cars the ability to be repaired.
-  - A repaired car can be driven again.
+  - A repaired car can be driven again. */
 
+function Car (model, make) {
+  this.model = model;
+  this.make = make;
+  this.odometer = 0;
+  this.canBeDriven = true;
+}
+
+Car.prototype.drive = function (kilometers) {
+  if (this.canBeDriven === true) {
+    return this.odometer+=Number(kilometers);
+  } else {
+    return `I crashed at ${this.odometer} kilometers!`
+  }
+};
+Car.prototype.crash = function () {
+  return this.canBeDriven = false;
+};
+Car.prototype.repair = function () {
+  return this.canBeDriven = true;
+}
+
+var toyota = new Car ("Corolla", "Toyota");
+console.log(toyota);
+
+
+  /*
   TASK 3
 
   - Build a Baby constructor that subclasses the Person built earlier.
